@@ -52,6 +52,19 @@ After preparation `Deployment` and `Service` you can run command
 $ kubectl apply -f deployment.yaml
 ```
 
+## Important
+
+When the Spring Boot application is running, it listens to the port.
+
+But at what IP address? LocalHost on `127.0.0.1`?
+
+For application in container is __wrong__: the connection will not be possible!
+
+In `application.properties` need set correct `server.port` and `server.address`.
+
+`server.address` mast be as `0.0.0.0` for bind all IP on container.
+
+
 ## Links
 
 Docker build <https://docs.docker.com/engine/reference/commandline/build>
