@@ -1,12 +1,16 @@
 # Spring Boot Container On Kubernetes.
 
+Prepare Spring Boot application for Kubernetes Environment.
+
+Target platform - Linux Debian (_on this variant used version 11.1_)
+
 ## Component version
 
 * Java 11 + JDK
 * Maven 3.6
 * Spring Boot 2.4
 * Docker Engine 20.10
-* Local Kubernetes (as variant Minikube 1.23).
+* Local Kubernetes 1.22 (as variant minikube + kubectl).
 
 ## Purpose
 
@@ -30,9 +34,26 @@ For Prepare Docker Image need:
 
 * Go to project root catalogue.
 * Build project `mvn clean package`.
-* Run command `docker build -t springio/sb-service .` for build image with tag `springio/sb-service` by current `Dockerfile`.
-* Check the creation of the image by command `docker container ls`.
+* Run command `docker build -t springio/gs-spring-boot-docker .` for build image with current `Dockerfile`.
+* Check the creation of the image by command `docker image ls`.
 
-This works with the `Linux` operating system.
+### Prepare Deployment
 
-For other system may use IDE Docker plugin.
+Use this command for prepare Deployment template, step by step:
+
+```
+$ kubectl create deployment t1 --image=springio/gs-spring-boot-docker --dry-run=client --port=8888 -o=yaml > deployment.yaml
+$ echo --- >> deployment.yaml
+$ kubectl create service loadbalancer t1 --tcp=8888 --dry-run=client -o=yaml >> deployment.yaml
+```
+
+After preparation `Deployment` and `Service` you can run command
+```
+$ kubectl apply -f deployment.yaml
+```
+
+## Links
+
+Docker build <https://docs.docker.com/engine/reference/commandline/build>
+Dockerfile, reference <https://docs.docker.com/engine/reference/builder>
+Dockerfile, best practices <https://docs.docker.com/develop/develop-images/dockerfile_best-practices>

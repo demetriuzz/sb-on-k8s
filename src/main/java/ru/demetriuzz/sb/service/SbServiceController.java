@@ -14,7 +14,7 @@ import javax.servlet.ServletRequest;
 @RequestMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 public class SbServiceController {
 
-    private Logger logger = LoggerFactory.getLogger(SbServiceController.class);
+    private final Logger logger = LoggerFactory.getLogger(SbServiceController.class);
 
     @GetMapping(path = {"/", "/hello"})
     public Message getHello(ServletRequest request) {

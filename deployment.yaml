@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: t1
+  name: t1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: t1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: t1
+    spec:
+      containers:
+      - image: springio/gs-spring-boot-docker
+        name: gs-spring-boot-docker
+        ports:
+        - containerPort: 8888
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: t1
+  name: t1
+spec:
+  ports:
+  - name: "8888"
+    port: 8888
+    protocol: TCP
+    targetPort: 8888
+  selector:
+    app: t1
+  type: LoadBalancer
+status:
+  loadBalancer: {}
