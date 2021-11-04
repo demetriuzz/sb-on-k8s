@@ -21,3 +21,18 @@
 * Correct start container.
 * Correct stop container.
 * Working endpoint in Spring Boot application provided by the component Actuator.
+
+## Comment
+
+### Prepare Docker Image
+
+For Prepare Docker Image need:
+
+* Go to project root catalogue.
+* Build project `mvn clean package`.
+* Run command `docker build -t springio/sb-service .` for build image with tag `springio/sb-service` by current `Dockerfile`.
+* Check the creation of the image by command `docker container ls`.
+
+This works with the `Linux` operating system.
+
+For other system may use IDE Docker plugin.
