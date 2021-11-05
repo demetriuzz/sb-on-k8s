@@ -20,8 +20,6 @@ spec:
       containers:
       - image: springio/gs-spring-boot-docker
         name: gs-spring-boot-docker
-        ports:
-        - containerPort: 8888
         resources: {}
 status: {}
 ---
@@ -34,10 +32,10 @@ metadata:
   name: t1
 spec:
   ports:
-  - name: "8888"
-    port: 8888
+  - name: 8200-8100
+    port: 8200
     protocol: TCP
-    targetPort: 8888
+    targetPort: 8100
   selector:
     app: t1
   type: LoadBalancer

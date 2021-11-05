@@ -42,9 +42,9 @@ For Prepare Docker Image need:
 Use this command for prepare Deployment template, step by step:
 
 ```
-$ kubectl create deployment t1 --image=springio/gs-spring-boot-docker --dry-run=client --port=8888 -o=yaml > deployment.yaml
+$ kubectl create deployment t1 --image springio/gs-spring-boot-docker --dry-run=client -o yaml > deployment.yaml
 $ echo --- >> deployment.yaml
-$ kubectl create service loadbalancer t1 --tcp=8888 --dry-run=client -o=yaml >> deployment.yaml
+$ kubectl create service loadbalancer t1 --tcp 8200:8100 --dry-run=client -o yaml >> deployment.yaml
 ```
 
 After preparation `Deployment` and `Service` you can run command
