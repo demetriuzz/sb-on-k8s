@@ -68,5 +68,9 @@ In `application.properties` need set correct `server.port` and `server.address`.
 ## Links
 
 Docker build <https://docs.docker.com/engine/reference/commandline/build>
+
 Dockerfile, reference <https://docs.docker.com/engine/reference/builder>
+
 Dockerfile, best practices <https://docs.docker.com/develop/develop-images/dockerfile_best-practices>
+
+About Docker <https://www.ibm.com/ru-ru/cloud/learn/docker>
